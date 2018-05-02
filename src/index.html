@@ -39,23 +39,8 @@
           <div class="panel-body">
             <img alt="140x140" data-src="holder.js/140x140" class="img-rounded img-center" style="width: 100%;" src="https://animalso.com/wp-content/uploads/2017/01/Golden-Retriever_6.jpg" data-holder-rendered="true">
             <br/><br/>
-<!--
-            <strong>Description of the Change</strong>: <span class="pet-breed">Golden Retriever</span><br/>
-            <strong>Time of Change</strong>: <span class="pet-age">3</span><br/>
-            <strong>RAM_CI_New</strong>: <span class="pet-location">Warren, MI</span><br/>
-            <strong>CPU_CI_New</strong>: <span class="pet-breed">Golden Retriever</span><br/>
-            <strong>RAM_CI_Current</strong>: <span class="pet-age">3</span><br/>
-            <strong>CPU_CI_Current</strong>: <span class="pet-location">Warren, MI</span><br/><br/>
--->
             <button class="btn btn-default btn-complete" type="button" data-id="0" >Create/update/close</button></br>
-<!--
-             <button class="btn btn-default btn-adopt" type="Submit" data-id="0">Change details</button><br/><br/>
--->
             <label class="status" data-id="0" id="myLabel"></label>
-<!--            <form action="/change-data-handling-page" method="post">
-              <div>
-                <label for="description">Description:</label>
--->
             <label class="description" data-id="0" id="myDescription">Description of the Change:</label>
             <label class="description" data-id="0" id="myDescriptionPH"></label>
             <input type="text" id="textDescription" data-id="0"></input></br>
@@ -70,30 +55,16 @@
             <label class="description" data-id="0" id="oldRAMPH"></label></br>
             <button class="btn btn-default btn-change" type="submit" id="buttonDescription" data-id="0">submit</button><br/>
             <label class="status" data-id="0" id="myLabel1"></label>
-<!--
-              </div>
-              <div>
-                <label for="date_when">Date:</label>
-
-                <input type="text" id="date_when_imp" name="date_when_imp_message">
-
-              </div>
-              <div class="button">
-                <button type="submit">submit</button>
-              </div>
-            </form>
--->
           </div>
         </div>
       </div>
     </div>
 
     <div>
-      <!--button onclick="promise()">Get Jenkins Data</button><br/><br/>
-        <p id="jenkinsData"> </p>-->
       Enter Transaction Number <input type="text" id="textbox1" name="Enter Block Number"><br/><br/>
       <button onclick="getBlock()">Get Block Data</button>
       <p id="blockdata"> </p>
+      <button onclick="clearData()">Clear</button>
     </div>
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -102,6 +73,5 @@
     <script src="js/web3.min.js"></script>
     <script src="js/truffle-contract.js"></script>
     <script src="js/block.js"></script>
-    <!--<script src="js/promise.js"></script>-->
     <script src="js/app.js"></script>
 </html>

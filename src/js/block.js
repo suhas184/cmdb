@@ -8,7 +8,13 @@ function getBlock() {
         var input = web3.toAscii(output).replace(/\u0000/g, '').replace(/\yÖ/g, '').replace(/\u0001Á/g,'').replace(/\u0001@A/g,'').replace(/\@A/g ,'').replace(/\u0000D/g,'').replace(/\u0000@/g,'')
         console.log(input);
         document.getElementById("blockdata").innerHTML = input;
+        document.getElementById("textbox1").value = "";
     }else
         console.error(error);
 })
+}
+
+function clearData() {
+  document.getElementById("blockdata").innerHTML = "";
+  document.getElementById("textbox1").value = "";
 }
