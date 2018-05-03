@@ -5,9 +5,12 @@ function getBlock() {
  web3.eth.getTransaction(transactionId, function(error, result){
     if(!error){
         var output = result.input;
-        var input = web3.toAscii(output).replace(/\u0000/g, '').replace(/\yÖ/g, '').replace(/\u0001Á/g,'').replace(/\u0001@A/g,'').replace(/\@A/g ,'').replace(/\u0000D/g,'').replace(/\u0000@/g,'')
+        var input = web3.toAscii(output).replace(/\u0000/g, '').replace(/\yÖ/g, '').replace(/\u0001Á/g,'').replace(/\u0001@A/g,'').replace(/\@A/g ,'').replace(/\u0000D/g,'').replace(/\u0000@/g,'').replace(/\u?]fi à `/g,'');
+        var input1 = input.replace('', '$').replace('', '$').replace('', '$').replace('', '$');
+
+// ?]fi à `Upgrade RAM12th May42
         console.log(input);
-        document.getElementById("blockdata").innerHTML = input;
+        document.getElementById("blockdata").innerHTML = input1;
         document.getElementById("textbox1").value = "";
     }else
         console.error(error);

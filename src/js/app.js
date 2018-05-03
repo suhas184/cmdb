@@ -20,7 +20,26 @@ App = {
         petTemplate.find('.status').attr('data-id', data[i].id);
         petsRow.append(petTemplate.html());
       }
-    });
+    }
+  );
+
+      $.getJSON('../pets2.json', function(data) {
+        var petsRow = $('#petsRow2');
+        var petTemplate = $('#petTemplate2');
+        for (i = 0; i < data.length; i ++) {
+          petTemplate.find('.panel-title').text(data[i].name);
+          petTemplate.find('img').attr('src', data[i].picture);
+          petTemplate.find('.pet-breed').text(data[i].breed);
+          petTemplate.find('.pet-age').text(data[i].age);
+          petTemplate.find('.pet-location').text(data[i].location);
+          petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+          petTemplate.find('.btn-complete').attr('data-id', data[i].id);
+          petTemplate.find('.status').attr('data-id', data[i].id);
+          petsRow.append(petTemplate.html());
+        }
+      }
+    );
+  //  });
 
     return App.initWeb3();
   },
@@ -122,6 +141,7 @@ App = {
   handleAdopt: function(event) {
     event.preventDefault();
     var petId = parseInt($(event.target).data('id'));
+    //console.log(petId);
     var adoptionInstance;
     web3.eth.getAccounts(function(error, accounts) {
   if (error) {
@@ -130,7 +150,10 @@ App = {
   var account = accounts[0];
     App.contracts.Adoption.deployed().then(function(instance) {
     adoptionInstance = instance;
-    return adoptionInstance.changeRequest(petId, $("#myDescriptionPH[data-id*='"+petId+"']").text(), $("#myTimePH[data-id*='"+petId+"']").text(), $("#newRAMPH[data-id*='"+petId+"']").text(), $("#oldRAMPH[data-id*='"+petId+"']").text(), {from: account});
+    //var test1 = $("#myDescriptionPH").text();
+    //console.log(test1);
+    //return adoptionInstance.changeRequest(petId, $("#myDescriptionPH[data-id*='"+petId+"']").text(), $("#myTimePH[data-id*='"+petId+"']").text(), $("#newRAMPH[data-id*='"+petId+"']").text(), $("#oldRAMPH[data-id*='"+petId+"']").text(), {from: account});
+    return adoptionInstance.changeRequest(petId, $("#myDescriptionPH").text(), $("#myTimePH").text(), $("#newRAMPH").text(), $("#oldRAMPH").text(), {from: account});
   }).then(function(result) {
     return App.markAdopted();
   }).catch(function(err) {
