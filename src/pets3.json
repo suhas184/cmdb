@@ -1,0 +1,10 @@
+[
+  {
+    "id": 2,
+    "name": "Close Change",
+    "picture": "images/close.png",
+    "age": 2,
+    "breed": "Middleware",
+    "location": "Dev"
+  }
+]

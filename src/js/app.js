@@ -39,6 +39,23 @@ App = {
         }
       }
     );
+
+    $.getJSON('../pets3.json', function(data) {
+      var petsRow = $('#petsRow3');
+      var petTemplate = $('#petTemplate3');
+      for (i = 0; i < data.length; i ++) {
+        petTemplate.find('.panel-title').text(data[i].name);
+        petTemplate.find('img').attr('src', data[i].picture);
+        petTemplate.find('.pet-breed').text(data[i].breed);
+        petTemplate.find('.pet-age').text(data[i].age);
+        petTemplate.find('.pet-location').text(data[i].location);
+        petTemplate.find('.btn-adopt').attr('data-id', data[i].id);
+        petTemplate.find('.btn-complete').attr('data-id', data[i].id);
+        petTemplate.find('.status').attr('data-id', data[i].id);
+        petsRow.append(petTemplate.html());
+      }
+    }
+  );
   //  });
 
     return App.initWeb3();
@@ -76,6 +93,7 @@ App = {
     $(document).on('click', '.btn-change', App.handleChange);
     $(document).on('click', '.btn-get', App.getData);
     $(document).on('click', '.btn-submitUpdate', App.handleUpdate);
+    $(document).on('click', '.btn-getUpdateClose', App.handleClose);
   },
 
 // markAdopted
@@ -208,6 +226,42 @@ getData: function(event){
 })
   //console.log(App.latestBlock);
 },
+
+handleClose: function(event){
+
+
+  var latestBlock = web3.eth.getBlockNumber(function(error, result1){
+    if(!error)
+    {
+        console.log(result1);
+        web3.eth.getBlock(result1, true, function(error, result){
+           if(!error){
+               var output = result.transactions.slice();
+               console.log(output);
+               var output1 = output.slice();
+               console.log(output1);
+               var output2 = output1[0];
+               console.log(output2);
+               var output3 = output2.input;
+               console.log(output3);
+               var output4 = web3.toAscii(output3).replace(/[^\x20-\x7E]+/g, '').replace(']fi `', '');
+               console.log(output4);
+               //var uId = 1;
+               $("#myLabelClose").html(output4);
+                    }else
+               console.error(error);
+       })
+        return result1;
+    }
+    else
+    {
+        console.error(error);
+        alert(error)
+    }
+})
+  //console.log(App.latestBlock);
+},
+
 
 //handleUpdateAdopt
 
